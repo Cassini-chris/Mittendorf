@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/fav/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/fav/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/fav/favicon-16x16.png">
-    <link rel="manifest" href="assets/img/fav/site.webmanifest">
+    <!-- <link rel="manifest" href="assets/img/fav/site.webmanifest"> -->
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -29,12 +29,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Fredericka+the+Great&display=swap" rel="stylesheet">
 
    <!-- Firebase for Firestore -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-    <script type="module" src="gear.js"></script>
-    <script type="module" src="races_save.js"></script>
-        <!-- <script type="module" src="races2.js"></script> -->
+    <script type="module" src="app.js"></script>
+
+    <script>
+
+        const firebase = require("firebase");
+        // Required for side-effects
+        require("firebase/firestore");
+
+    </script>
+
 </head>
 
 
@@ -59,10 +66,6 @@
         </div>
     </nav>
     <!-- Close Top Nav -->
-
-
-
-
 
 
     <!-- Header -->
@@ -99,176 +102,17 @@
     </nav>
     <!-- Close Header -->
 
-
-
-        <section class="bg-light">
-            <div class="container py-5">
-
-              <div class="col-lg-6 m-auto">
-                  <h1 style="text-align:center" class="h1">My IRONMAN results</h1>
-              <img src="./assets/img/sports/ironman2.png" alt="IRONMAN" id="ironman_picture">
-              </div>
-            <div class="table-responsive">
-
-
-
-                      <table class="table table-dark table-striped" id="ironman_results">
-                        <thead>
-                          <tr>
-                            <th>Event</th>
-                            <th>Swim</th>
-                            <th>T1</th>
-                            <th>Bike (184k)</th>
-                            <th>T2</th>
-                            <th>Run</th>
-                            <th>OVERALL</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                           <td>IRONMAN Frankfurt 2016</td>
-                           <td>1:23:45</td>
-                           <td>00:08:23</td>
-                           <td>5:53:32</td>
-                           <td>00:03:42</td>
-                           <td>4:21:48</td>
-                             <td style="font-weight:bold">11:51:10</td>
-                        </tr>
-                         <tr>
-                           <td>IRONMAN Frankfurt 2018</td>
-                           <td>1:29:02</td>
-                           <td>00:06:51</td>
-                           <td>6:12:58</td>
-                           <td>00:04:02</td>
-                           <td>4:26:16</td>
-                             <td style="font-weight:bold">12:19:09</td>
-                        </tr>
-                        <tr>
-                          <td>IRONMAN Frankfurt 2021</td>
-                          <td>1:35:05</td>
-                          <td>00:06:34</td>
-                          <td>5:36:44</td>
-                          <td>00:05:10</td>
-                          <td>4:38:59</td>
-                          <td style="font-weight:bold">12:02:33</td>
-                       </tr>
-
-                        </tbody>
-                      </table>
+    <!-- Start Banner Hero -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel" style="">
+        <ol class="carousel-indicators" >
+            <li data-bs-target="#template-mo-zay-hero-carousel" style="margin-top:0px; background-color:#fff" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" style="margin-top:0px; background-color:#fff" data-bs-slide-to="1"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" style="margin-top:0px; background-color:#fff" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
 
 
 
-                          </div>
-
-    </div>
-
-    </section>
-
-
-
-
-    <!-- Start Featured Product -->
-
-    <section class="bg-light">
-        <div class="container py-5">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">My current Gear</h1>
-                    <p>
-                        The gear list holds my recommended gear for Road Running & Trail Running, Swimming and Biking.
-                    </p>
-                </div>
-            </div>
-
-<div class="table-responsive-xxl">
-    <table class="table" id="gear_table" style=" background-color: white !important;">
-      <thead>
-        <tr>
-            <th scope="col"> </th>
-            <th scope="col">
-              <select id="selector_gear_category" class="form-select" aria-label="Default select example">
-                <option value="ALL" selected>Category</option>
-                <option value="Bike">Bikes</option>
-                <option value="Equipment">Equipment</option>
-                <option value="Clothing">Clothing</option>
-                <option value="Accessoires">Accessoires</option>
-              </select>
-            </th>
-
-          <th scope="col">
-            <select id="selector_gear_type" class="form-select" aria-label="Default select example">
-              <option value="ALL" selected>Type</option>
-              <option value="Jersey">Jersey</option>
-              <option value="Shoes">Shoes</option>
-              <option value="Bibshort">Bibshort</option>
-            </select>
-          </th>
-          <th scope="col">
-            <select id="selector_gear_brand" class="form-select" aria-label="Default select example">
-             <option value="ALL" selected>Brand</option>
-              <option value="Canyon">Canyon</option>
-              <option value="BMC">BMC</option>
-              <option value="Cannondale">Cannondale</option>
-            </select>
-          </th>
-          <th scope="col">Model</th>
-          <th scope="col">Description</th>
-          <th style="min-width:78px" scope="col">Price</th>
-          <th scope="col">Link</th>
-        </tr>
-      </thead>
-      <tbody>
-
-      </tbody>
-    </table>
-</div>
-</div>
-</section>
-
-
-<!-- Start Featured Product --------------------------------------------------->
-
-<section class="bg-light">
-    <div class="container py-5">
-        <div class="row text-center py-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">My upcoming Races</h1>
-                <p>
-                    The race list holds my favorite Races and Events in Sports.
-                </p>
-            </div>
-        </div>
-
-<div class="table-responsive-xxl">
-<table class="table" id="races_table" style=" background-color: white !important;">
-  <thead>
-    <tr>
-      <th scope="col"> </th>
-      <th scope="col">Name</th>
-      <th scope="col">Distance</th>
-      <th scope="col">
-      <select id="selector_race_type" class="form-select" aria-label="Default select example">
-        <option value="ALL" selected>Type</option>
-        <option value="Ultra">Ultra</option>
-        <option value="Fun">Fun Run</option>
-        <option value="Marathon">Marathon</option>
-        <option value="Halfmarathon">Halfmarathon</option>
-      </select>
-      </th>
-
-      <th style="min-width:70px" scope="col">Elevation</th>
-      <th style="min-width:70px" scope="col">Date</th>
-      <th style="min-width:80px" scope="col">Days left</th>
-      <th scope="col">Location</th>
-    </tr>
-  </thead>
-  <tbody>
-
-  </tbody>
-</table>
-</div>
-</div>
-</section>
 
     <!-- Start Featured Product -->
     <section class="bg-light">
@@ -451,8 +295,9 @@
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
 
-
-
+    <script>
+    </script>
+    <!-- End Script -->
 </body>
 
 </html>
