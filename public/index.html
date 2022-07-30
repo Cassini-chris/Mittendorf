@@ -111,11 +111,23 @@
                                     such as my favorite Races, my recommended Gear, as well as my Side-Projects e.g.
                                     <a class="text-success" href="https://RunCulator.com" target="_blank"> RunCulator.com</a>.
                                 </p>
+                                <span>>> Time To <a class="text-success" target="_blank" href="https://www.challenge-roth.com/home.html">Challenge Roth</a> </span></br>
+                                <span id=Milliseconds> </span>
                             </div>
                         </div></a>
                     </div>
                 </div>
             </div>
+
+            <script>
+            var countDownDate = new Date("June 25, 2023 06:30:00").getTime();
+
+            var myfunc = setInterval(function() {
+              var now = new Date().getTime();
+              var timeleft = countDownDate - now;
+              document.getElementById("Milliseconds").innerHTML =  Math.floor(((timeleft /1)))  + " Milliseconds";
+            }, 1)
+            </script>
 
 <!-- ITEM 2 (Coding) ################################################################ -->
             <div class="carousel-item" style="background-image:url('./assets/img/header_background/coding_back.jpg'); background-size:100% 100%;">
