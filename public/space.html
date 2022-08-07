@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Christoph Mittendorf</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/space.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/fav/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/fav/site.webmanifest">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+   <!-- Load Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Fredericka+the+Great&display=swap" rel="stylesheet">
+
+   <!-- Firebase for Firestore -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> -->
+
+    <script type="module" src="gear.js"></script>
+    <script type="module" src="races_save.js"></script>
+        <!-- <script type="module" src="races2.js"></script> -->
+</head>
+
+
+
+<body>
+  <!-- Start Top Nav -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+      <div class="container text-light">
+          <div class="w-100 d-flex justify-content-between">
+              <div>
+                  <!-- <i class="fa fa-rocket" aria-hidden="true"></i> -->
+                  <a class="navbar-sm-brand text-light text-decoration-none" >This idea in Life is to be Happy</a>
+
+              </div>
+              <div>
+                  <a class="text-light" href="https://www.linkedin.com/in/dr-christoph-mittendorf/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+              </div>
+          </div>
+      </div>
+  </nav>
+  <!-- Close Top Nav -->
+
+
+
+
+
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center" style="color:#212934">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" id="heading_text" href="index.html">
+              Christoph Mittendorf
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="vita.html">Vita</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sports.html">Sports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="coding.html">Coding</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="space.html">Space</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+
+<!-- ####################################################################### -->
+<!-- Space ################################### -->
+<!-- ####################################################################### -->
+
+            <section class="bg-light"style="background-color: #084298 !important">
+
+              <div class="container py-5" style="padding-bottom:0px !important; text-align:center">
+              <p style="color:white; padding:0; margin-top: 10px"><b>Two pictures</b> </br>
+                The Starry Night is an oil-on-canvas painting by the Dutch Post-Impressionist painter Vincent van Gogh.
+               </br>  And NASA’s picture of Jupiter from JunoCam near the planet’s north pole on July 5, 2022.
+              </p>
+            </div>
+
+                  <div class="container py-5" style="padding:0px 0px 0px 0px !important;">
+                    <div style="">
+                      <div id="comparison"  style="
+                      margin: 0 auto;
+                      border: 1px solid white;
+                      padding: 0px;
+                      position: relative">
+                        <figure >
+                          <div id="divisor"></div>
+                        </figure>
+                        <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+                      </div>
+
+        <script>
+          var divisor = document.getElementById("divisor"),
+          slider = document.getElementById("slider");
+          function moveDivisor() {
+            divisor.style.width = slider.value+"%";
+          }
+        </script>
+          </div>
+          <div class="container py-5" style="padding-top:20px !important;  text-align:center">
+          <p style="padding:0; margin:0; ">
+            <b>
+              <a href="https://www.nasa.gov/mission_pages/juno/images/index.html/" target="_blank">>> NASA Juno Mission</a>
+            </b>
+          </p>
+          <p style="padding:0; margin:0"><b>
+            <a href="https://en.wikipedia.org/wiki/The_Starry_Night" target="_blank">>> van Gogh (The Starry Night)</a>  </b>
+          </p>
+          <span>Date: July 2022 || Version: 1.0</span>
+        </div>
+      </div>
+         </div>
+        </section>
+
+
+
+
+
+
+
+
+
+    <!-- Start Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Christoph Mittendorf</h2>
+                    <ul class="list-inline text-left footer-icons">
+                      <li class="list-inline-item border border-light rounded-circle text-center">
+                          <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/in/dr-christoph-mittendorf/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                      </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Site Content</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="#">Vita</a></li>
+                        <li><a class="text-decoration-none" href="#">Sports</a></li>
+                        <li><a class="text-decoration-none" href="#">Coding</a></li>
+                        <li><a class="text-decoration-none" href="#">Space</a></li>
+                        <li><a class="text-decoration-none" href="#">Chess</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Side Projects</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="https://runculator.com/">RunCulator.com</a></li>
+                        <li><a class="text-decoration-none" href="https://epicml.net/">EpicML.net</a></li>
+                        <li><a class="text-decoration-none" href="http://ml-models.de/">ML-Models.de</a></li>
+                        <li><a class="text-decoration-none" href="https://neural-style-transfer-app.ew.r.appspot.com/">Free-Style-Transfer</a></li>
+                        <li><a class="text-decoration-none" href="https://crasher-app-2021.web.app/">Crasher Game</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            &copy; 2022 Christoph Mittendorf
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+</body>
+</html>
