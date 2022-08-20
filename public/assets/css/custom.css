@@ -13,6 +13,7 @@
   #selector_gear_brand{font-size: 14px !important; padding:0 0 0 3px}
   #selector_gear_type{font-size: 14px !important; padding:0 0 0 3px}
   #selector_gear_category{font-size: 14px !important; padding:0 0 0 3px}
+  #selector_gear_sports{font-size: 14px !important; padding:0 0 0 3px}
   #ironman_results{font-size: 12px !important}
   .links {font-size: 14px !important}
   #ironman_picture{width:50%; height:50%; margin-left: auto; margin-right: auto; display: block;}
@@ -29,9 +30,10 @@
 #heading_text{font-size: 60px !important; font-family: 'Comforter Brush', cursive; color:#212934 !important}
 #gear_table{font-size: 18px !important}
 #races_table{font-size: 18px !important}
-#selector_gear_brand{font-size: 18px !important; padding:1px 1px 1px 5px}
-#selector_gear_type{font-size: 18px !important; padding:1px 1px 1px 5px}
-#selector_gear_category{font-size: 18px !important; padding:1px 1px 1px 5px}
+#selector_gear_brand{font-size: 16px !important; padding:1px 1px 1px 5px}
+#selector_gear_type{font-size: 16px !important; padding:1px 1px 1px 5px}
+#selector_gear_category{font-size: 16px !important; padding:1px 1px 1px 5px}
+#selector_gear_sports{font-size: 16px !important; padding:1px 1px 1px 5px}
 #ironman_results{font-size: 14px !important}
 .links {font-size: 18px !important}
 }

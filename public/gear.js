@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, onSnapshot} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, onSnapshot, orderBy} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDlH5h_gBUjeVwrtQeA_C6RirU26s1crWU",
@@ -18,14 +18,33 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
   const db = getFirestore(app);
 
   // Initialize all DRODOWN MENUS
+  let gear_sports_value = document.getElementById("selector_gear_sports").value;
   let gear_brand_value = document.getElementById("selector_gear_brand").value;
   let gear_type_value = document.getElementById("selector_gear_type").value;
   let gear_category_value = document.getElementById("selector_gear_category").value;
 
+  document.getElementById("selector_gear_sports").addEventListener("change", gear_sports_dropdown);
   document.getElementById("selector_gear_brand").addEventListener("change", gear_brand_dropdown);
   document.getElementById("selector_gear_type").addEventListener("change", gear_type_dropdown);
   document.getElementById("selector_gear_category").addEventListener("change", gear_category_dropdown);
 
+
+  //SPORTS DROPDOWN--------------------------------------------------------------
+  function gear_sports_dropdown(){
+    gear_sports_value = document.getElementById("selector_gear_sports").options[ document.getElementById("selector_gear_sports").selectedIndex].value;
+    let q = "";
+    console.log(q);
+    // Exception for ALL Values at Start
+    if (gear_sports_value == "ALL") {
+      console.log("Sports is done");
+      q = query(collection(db, "gear"), orderBy ("category", "asc"));}
+      else {q = query(collection(db, "gear"), where("sports", "==", gear_sports_value));
+    };
+    //Deletes the Table on the Page:
+    $("#gear_table tbody tr").remove();
+    //RUN
+    run_query_gear(q);
+    };
 
   //BRAND DROPDOWN--------------------------------------------------------------
   function gear_brand_dropdown(){
@@ -34,7 +53,8 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     console.log(q);
     // Exception for ALL Values at Start
     if (gear_brand_value == "ALL") {
-      console.log(true); q = query(collection(db, "gear"));}
+      console.log(true);
+      q = query(collection(db, "gear"));}
       else {q = query(collection(db, "gear"), where("brand", "==", gear_brand_value));
     };
     //Deletes the Table on the Page:
@@ -50,7 +70,8 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
       console.log(q);
       // Exception for ALL Values at Start
       if (gear_category_value == "ALL") {
-        console.log(true); q = query(collection(db, "gear"));}
+        console.log(true);
+        q = query(collection(db, "gear"));}
         else {q = query(collection(db, "gear"), where("category", "==", gear_category_value));
       };
       //Deletes the Table on the Page:
@@ -59,6 +80,7 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
       run_query_gear(q);
       };
 
+
     //TYPE DROPDOWN--------------------------------------------------------------
     function gear_type_dropdown(){
       gear_type_value = document.getElementById("selector_gear_type").options[ document.getElementById("selector_gear_type").selectedIndex].value;
@@ -66,7 +88,8 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
       console.log(q);
       // Exception for ALL Values at Start
       if (gear_type_value == "ALL") {
-        console.log(true); q = query(collection(db, "gear"));}
+        console.log(true);
+        q = query(collection(db, "gear"));}
         else {q = query(collection(db, "gear"), where("type", "==", gear_type_value));
       };
       //Deletes the Table on the Page:
@@ -98,11 +121,11 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     new_cell.appendChild(createA);
 
     var new_cell = newRow.insertCell();
-    var new_text = document.createTextNode(data.category);
+    var new_text = document.createTextNode(data.sports);
     new_cell.appendChild(new_text);
 
     var new_cell = newRow.insertCell();
-    var new_text = document.createTextNode(data.type);
+    var new_text = document.createTextNode(data.category);
     new_cell.appendChild(new_text);
 
     var new_cell = newRow.insertCell();
@@ -110,15 +133,19 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     new_cell.appendChild(new_text);
 
     var new_cell = newRow.insertCell();
+    var new_text = document.createTextNode(data.type);
+    new_cell.appendChild(new_text);
+
+    var new_cell = newRow.insertCell();
     var new_text = document.createTextNode(data.model);
     new_cell.appendChild(new_text);
 
-    var new_cell = newRow.insertCell();
-    var new_text = document.createTextNode(data.description);
-    new_cell.appendChild(new_text);
+    // var new_cell = newRow.insertCell();
+    // var new_text = document.createTextNode(data.description);
+    // new_cell.appendChild(new_text);
 
     var new_cell = newRow.insertCell();
-    var new_text = document.createTextNode("~ " + data.price + " €");
+    var new_text = document.createTextNode(data.price + " €");
     new_cell.appendChild(new_text);
 
 
@@ -137,4 +164,4 @@ unsubscribe();
 };
 
 
-gear_brand_dropdown();
+gear_sports_dropdown();
