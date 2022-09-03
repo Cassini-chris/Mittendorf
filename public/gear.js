@@ -118,6 +118,7 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     createA.setAttribute("width", "128");
     createA.setAttribute("height", "128");
     createA.setAttribute("alt", data.brand);
+    createA.style.borderRadius = "75px";
     new_cell.appendChild(createA);
 
     var new_cell = newRow.insertCell();
@@ -157,6 +158,14 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     createA.setAttribute('class', 'links');
     createA.appendChild(new_text);
     new_cell.appendChild(createA);
+
+    if (data.category == "Bike") {
+    newRow.style.backgroundColor = "#cac4c4"};
+
+    if (data.sports == "Running") {
+    newRow.style.backgroundColor = "#b6c9e2"};
+
+
 
 unsubscribe();
 });
