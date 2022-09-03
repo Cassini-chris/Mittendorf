@@ -159,13 +159,17 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     createA.appendChild(new_text);
     new_cell.appendChild(createA);
 
-    if (data.category == "Bike") {
-    newRow.style.backgroundColor = "#cac4c4"};
+
 
     if (data.sports == "Running") {
     newRow.style.backgroundColor = "#b6c9e2"};
+    if (data.sports == "Cycling") {
+    newRow.style.backgroundColor = "#f0f0f0"};
+    if (data.category == "Equipment") {
+    newRow.style.backgroundColor = "white"};
 
-
+    if (data.category == "Bike") {
+    newRow.style.backgroundColor = "#cac4c4"};
 
 unsubscribe();
 });
