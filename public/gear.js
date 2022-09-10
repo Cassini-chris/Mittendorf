@@ -20,12 +20,12 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
   // Initialize all DRODOWN MENUS
   let gear_sports_value = document.getElementById("selector_gear_sports").value;
   let gear_brand_value = document.getElementById("selector_gear_brand").value;
-  let gear_type_value = document.getElementById("selector_gear_type").value;
+  // let gear_type_value = document.getElementById("selector_gear_type").value;
   let gear_category_value = document.getElementById("selector_gear_category").value;
 
   document.getElementById("selector_gear_sports").addEventListener("change", gear_sports_dropdown);
   document.getElementById("selector_gear_brand").addEventListener("change", gear_brand_dropdown);
-  document.getElementById("selector_gear_type").addEventListener("change", gear_type_dropdown);
+  // document.getElementById("selector_gear_type").addEventListener("change", gear_type_dropdown);
   document.getElementById("selector_gear_category").addEventListener("change", gear_category_dropdown);
 
 
@@ -37,7 +37,7 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     // Exception for ALL Values at Start
     if (gear_sports_value == "ALL") {
       console.log("Sports is done");
-      q = query(collection(db, "gear"), orderBy ("category", "asc"));}
+      q = query(collection(db, "gear"), orderBy ("sports", "asc"), orderBy("category", "asc"));}
       else {q = query(collection(db, "gear"), where("sports", "==", gear_sports_value));
     };
     //Deletes the Table on the Page:
@@ -82,21 +82,21 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
 
 
     //TYPE DROPDOWN--------------------------------------------------------------
-    function gear_type_dropdown(){
-      gear_type_value = document.getElementById("selector_gear_type").options[ document.getElementById("selector_gear_type").selectedIndex].value;
-      let q = "";
-      console.log(q);
-      // Exception for ALL Values at Start
-      if (gear_type_value == "ALL") {
-        console.log(true);
-        q = query(collection(db, "gear"));}
-        else {q = query(collection(db, "gear"), where("type", "==", gear_type_value));
-      };
-      //Deletes the Table on the Page:
-      $("#gear_table tbody tr").remove();
-      //RUN
-      run_query_gear(q);
-      };
+    // function gear_type_dropdown(){
+    //   gear_type_value = document.getElementById("selector_gear_type").options[ document.getElementById("selector_gear_type").selectedIndex].value;
+    //   let q = "";
+    //   console.log(q);
+    //   // Exception for ALL Values at Start
+    //   if (gear_type_value == "ALL") {
+    //     console.log(true);
+    //     q = query(collection(db, "gear"));}
+    //     else {q = query(collection(db, "gear"), where("type", "==", gear_type_value));
+    //   };
+    //   //Deletes the Table on the Page:
+    //   $("#gear_table tbody tr").remove();
+    //   //RUN
+    //   run_query_gear(q);
+    //   };
 
   //DATABASE QUERY #############################################################
   function run_query_gear(q) {
@@ -133,9 +133,9 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     var new_text = document.createTextNode(data.brand);
     new_cell.appendChild(new_text);
 
-    var new_cell = newRow.insertCell();
-    var new_text = document.createTextNode(data.type);
-    new_cell.appendChild(new_text);
+    // var new_cell = newRow.insertCell();
+    // var new_text = document.createTextNode(data.type);
+    // new_cell.appendChild(new_text);
 
     var new_cell = newRow.insertCell();
     var new_text = document.createTextNode(data.model);
@@ -167,9 +167,10 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     newRow.style.backgroundColor = "#f0f0f0"};
     if (data.category == "Equipment") {
     newRow.style.backgroundColor = "white"};
-
     if (data.category == "Bike") {
     newRow.style.backgroundColor = "#cac4c4"};
+    if (data.sports == "Swimming") {
+    newRow.style.backgroundColor = "#62bd7d"};
 
 unsubscribe();
 });
