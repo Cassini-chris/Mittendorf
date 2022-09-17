@@ -171,6 +171,10 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, o
     newRow.style.backgroundColor = "#cac4c4"};
     if (data.sports == "Swimming") {
     newRow.style.backgroundColor = "#62bd7d"};
+    if (data.sports == "Triathlon") {
+    newRow.style.backgroundColor = "#f6ffa9"};
+
+
 
 unsubscribe();
 });
