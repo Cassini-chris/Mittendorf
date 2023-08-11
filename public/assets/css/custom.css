@@ -7,7 +7,7 @@
 @media (max-width: 499px) {
  .carousel-item {height:850px}
   #template-mo-zay-hero-carousel {height:850px}
-  #heading_text{font-size: 35px !important; font-family: 'Comforter Brush', cursive; color:#212934 !important}
+  #heading_text{font-size: 30px !important; font-family: 'Comforter Brush', cursive; color:#212934 !important}
   #gear_table{font-size: 14px  !important}
   #races_table{font-size: 14px !important}
   #selector_gear_brand{font-size: 14px !important; padding:0 0 0 3px; min-width:75px}
@@ -27,7 +27,7 @@
 @media (min-width: 500px) {
  .carousel-item {height:660px}
 #template-mo-zay-hero-carousel {height:660px}
-#heading_text{font-size: 50px !important; font-family: 'Comforter Brush', cursive; color:#212934 !important}
+#heading_text{font-size: 45px !important; font-family: 'Comforter Brush', cursive; color:#212934 !important}
 #gear_table{font-size: 18px !important}
 #races_table{font-size: 18px !important}
 #selector_gear_brand{font-size: 16px !important; padding:1px 1px 1px 5px}
