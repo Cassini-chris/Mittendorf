@@ -82,7 +82,6 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where} f
     var new_text = document.createTextNode("~ " + data.price + " €");
     new_cell.appendChild(new_text);
 
-
     var new_cell = newRow.insertCell();
     var createA = document.createElement('a');
     var new_text = document.createTextNode("Buy here");

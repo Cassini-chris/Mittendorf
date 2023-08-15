@@ -17,7 +17,7 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where} f
 
   // Initialize Cloud Firestore and get a reference to the service
   const db = getFirestore(app);
-  let q = query(collection(db, "races"));
+  let q = query(collection(db, "engineering"));
 
   const querySnapshot = await getDocs((q));
 
@@ -25,53 +25,56 @@ import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where} f
   //  console.log(`${doc.id} => ${doc.data()}`);
     const data = doc.data();
 
-    var tbodyRef = document.getElementById('races_table').getElementsByTagName('tbody')[0];
+    var tbodyRef = document.getElementById('engineering_table').getElementsByTagName('tbody')[0];
     // Insert a row at the end of table
     var newRow = tbodyRef.insertRow();
+
     // Insert a cell at the end of the row
     var new_cell = newRow.insertCell();
-    var createA = document.createElement('img');
-    var new_text = "./assets/img/races/" + data.img;
-    createA.setAttribute('src', new_text);
-    createA.setAttribute("width", "128");
-    createA.setAttribute("height", "128");
-    createA.setAttribute("alt", data.name);
-    new_cell.appendChild(createA);
+    var new_text = document.createTextNode(data.project);
+    new_cell.appendChild(new_text);
 
+    // App
     var new_cell = newRow.insertCell();
     var createA = document.createElement('a');
-    var new_text = document.createTextNode(data.name);
-    createA.setAttribute('href', data.link);
+    var new_text = document.createTextNode("App");
+    createA.setAttribute('href', data.app);
     createA.setAttribute('target', '_blank');
     createA.setAttribute('class', 'links');
     createA.appendChild(new_text);
     new_cell.appendChild(createA);
 
+    // Last Update
     var new_cell = newRow.insertCell();
-    var new_text = document.createTextNode(data.distance + "km");
+    var project_date = data.updated.toDate();
+    var project_date_year = project_date.getFullYear();
+    var project_date_month = project_date.getMonth()+1;
+    project_date = project_date_month + "/" + project_date_year;
+    var new_text = document.createTextNode(project_date);
     new_cell.appendChild(new_text);
 
+    // Type
     var new_cell = newRow.insertCell();
-    var new_text = document.createTextNode(data.elevation + "m");
+    var new_text = document.createTextNode(data.type);
     new_cell.appendChild(new_text);
 
+    // GitHub
     var new_cell = newRow.insertCell();
-    var new_text = document.createTextNode(data.date.toDate().toDateString());
-    new_cell.appendChild(new_text);
-
-
-    var new_cell = newRow.insertCell();
-    var race_date = data.date.toMillis();
-    var now_date = Date.now();
-    var delta = race_date - now_date;
-    var new_text = document.createTextNode(Math.floor(delta/1000/60/60/24));
-    new_cell.appendChild(new_text);
-    var new_cell = newRow.insertCell();
-
     var createA = document.createElement('a');
-    var new_text = document.createTextNode(data.city + ", " + data.country);
+    var new_text = document.createTextNode("GitHub");
+    createA.setAttribute('href', data.github);
+    createA.setAttribute('target', '_blank');
+    createA.setAttribute('class', 'links');
     createA.appendChild(new_text);
     new_cell.appendChild(createA);
+
+    // Description
+    var new_cell = newRow.insertCell();
+    var new_text = document.createTextNode(data.description);
+    new_cell.appendChild(new_text);
+
+
+
 
 
   });

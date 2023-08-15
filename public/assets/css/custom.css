@@ -15,7 +15,8 @@
   #selector_gear_category{font-size: 14px !important; padding:0 0 0 3px; min-width:75px}
   #selector_gear_sports{font-size: 14px !important; padding:0 0 0 3px; min-width:75px}
   #ironman_results{font-size: 12px !important}
-  .links {font-size: 14px !important}
+  #engineering_table{font-size: 12px !important}
+  .links {font-size: 12px !important}
   #ironman_picture{width:50%; height:50%; margin-left: auto; margin-right: auto; display: block;}
 }
 
@@ -35,5 +36,6 @@
 #selector_gear_category{font-size: 16px !important; padding:1px 1px 1px 5px}
 #selector_gear_sports{font-size: 16px !important; padding:1px 1px 1px 5px}
 #ironman_results{font-size: 14px !important}
-.links {font-size: 18px !important}
+#engineering_table{font-size: 14px !important}
+.links {font-size: 14px !important}
 }
