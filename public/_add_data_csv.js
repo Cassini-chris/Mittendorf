@@ -3,40 +3,105 @@ import { initializeApp }  from "https://www.gstatic.com/firebasejs/9.4.0/firebas
 import { getFirestore , doc, setDoc} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 // import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDlH5h_gBUjeVwrtQeA_C6RirU26s1crWU",
-  authDomain: "christoph-mittendorf.firebaseapp.com",
-  projectId: "christoph-mittendorf",
-  storageBucket: "christoph-mittendorf.appspot.com",
-  messagingSenderId: "111308864164",
-  appId: "1:111308864164:web:65334b0e8d0967c1434431",
-  measurementId: "G-8YJP0VHNWJ"
+
+var apiKey ="";
+var authDomain ="";
+var projectId ="";
+var storageBucket ="";
+var messagingSenderId ="";
+var appId ="";
+var measurementId ="";
+var db = "";
+
+function details_function() {
+  apiKey = document.getElementById("apiKey").value;
+  console.log(apiKey);
+
+  // authDomain = document.getElementById("authDomain").value;
+  // console.log(authDomain);
+
+  // projectId = document.getElementById("projectId").value;
+  // console.log(projectId);
+
+  // storageBucket = document.getElementById("storageBucket").value;
+  // console.log(storageBucket);
+
+  // messagingSenderId = document.getElementById("messagingSenderId").value;
+  // console.log(messagingSenderId);
+
+  // appId = document.getElementById("appId").value;
+  // console.log(appId);
+
+  // measurementId = document.getElementById("measurementId").value;
+  // console.log(measurementId);
+
+
+
+  const firebaseConfig = {
+    // apiKey : apiKey,
+    // authDomain: authDomain,
+    // projectId: projectId,
+    // storageBucket: storageBucket,
+    // messagingSenderId: messagingSenderId,
+    // appId: appId,
+    // measurementId: measurementId
+  
+    apiKey: "AIzaSyDlH5h_gBUjeVwrtQeA_C6RirU26s1crWU",
+    authDomain: "authDomain-mittendorf.firebaseapp.com",
+    projectId: "christoph-mittendorf",
+    storageBucket: "christoph-mittendorf.appspot.com",
+    messagingSenderId: "111308864164",
+    appId: "1:111308864164:web:65334b0e8d0967c1434431",
+    measurementId: "G-8YJP0VHNWJ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+
+  console.log(apiKey);
+ 
+return app;
+
 };
 
 
+
+// const firebaseConfig = {
+//   apiKey : apiKey,
+//   authDomain: authDomain,
+//   projectId: projectId,
+//   storageBucket: storageBucket,
+//   messagingSenderId: messagingSenderId,
+//   appId: appId,
+//   measurementId: measurementId
+
+//   // apiKey: "AIzaSyDlH5h_gBUjeVwrtQeA_C6RirU26s1crWU",
+//   // authDomain: "authDomain-mittendorf.firebaseapp.com",
+//   // projectId: "christoph-mittendorf",
+//   // storageBucket: "christoph-mittendorf.appspot.com",
+//   // messagingSenderId: "111308864164",
+//   // appId: "1:111308864164:web:65334b0e8d0967c1434431",
+//   // measurementId: "G-8YJP0VHNWJ"
+// };
+
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 
-// // Add a new document in collection "cities"
-// await setDoc(doc(db, "cities", "LA"), {
-//   name: "Los Angeles",
-//   state: "CA",
-//   country: "USA"
-// })
-// .then(() => {
-//     console.log("Document successfully written!");
-// })
-// .catch((error) => {
-//     console.error("Error writing document: ", error);
-// });
 
-function add_data_to_firestore(){
+// #################################################################  
+// Check data type of content_field for numeric
+// #################################################################  
+function isNumeric(str) {
+  if (!isNaN(parseFloat(str)) && isFinite(str)){
+   str = parseInt(str)  
+  } return str;
+};
 
- 
+function add_data_to_firestore(app){
+  console.log(app);
+  db = getFirestore(app);
+  console.log(db);
   var collection_name = "collection_name";
-
    alert("clicked");
    const obj = {};
 
@@ -48,9 +113,8 @@ function add_data_to_firestore(){
   const header_Array = header.split(",");
   console.log(lines.length);
   
-for (var y=1; y<4; y++){
+for (var y=1; y<lines.length; y++){
   var document_name = "document_name: " + y;
-
 
   for (var i=0; i<header_Array.length; i++) {
     console.log(header_Array[i]);
@@ -64,10 +128,10 @@ for (var y=1; y<4; y++){
   console.log(content_Array);
   
   // for (var i=0; i<content_Array.length; i++) {
-    console.log("yes" + content_Array[i]);
+    console.log(content_Array[i]);
 
     var content_field = (content_Array[i]);
-
+    content_field = isNumeric(content_field);
     const yourKeyVariable = field;
     const someValueArray= content_field;
     obj[yourKeyVariable]= someValueArray
@@ -87,3 +151,4 @@ console.log(obj);
 }''
 
 document.getElementById("clickMe_2").addEventListener("click", add_data_to_firestore);
+document.getElementById("details").addEventListener("click", details_function);
