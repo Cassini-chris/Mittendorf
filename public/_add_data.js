@@ -8,8 +8,8 @@ import { getFirestore, doc, setDoc, Timestamp  } from "https://www.gstatic.com/f
     projectId: "christoph-mittendorf",
     storageBucket: "christoph-mittendorf.appspot.com",
     messagingSenderId: "111308864164",
-    appId: "1:111308864164:web:65334b0e8d0967c1434431",
-    measurementId: "G-8YJP0VHNWJ"
+    appId: "1:111308864164:web:d857a0b8997bf54e434431",
+    measurementId: "G-R0MS4BLQQZ"
   };
 
 // Initialize Firebase

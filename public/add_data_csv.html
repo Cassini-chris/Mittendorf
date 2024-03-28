@@ -2,203 +2,196 @@
 <html lang="en">
 
 <head>
-    <title>Dr. Christoph Mittendorf</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/fav/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/fav/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/fav/favicon-16x16.png">
+  <title>Dr. Christoph Mittendorf</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/templatemo.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/fav/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/fav/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/fav/favicon-16x16.png">
 
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-   
-    <!-- Load Google Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Fredericka+the+Great&display=swap" rel="stylesheet">
+  <!-- Load fonts style after rendering the layout styles -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <script type="module" src="_add_data_csv.js"async defer></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script> -->
+  <!-- Load Google Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Fredericka+the+Great&display=swap"
+    rel="stylesheet">
 
+  <script type="module" src="_add_data_csv.js" async defer></script>
 
-     <script>
-var full_text = [];
-var table = [];
-var rows = [];
-var cells = [];
-var lines = [];
+  <script>
+    // Create Global Arrays
+    var full_text = [];
+    var table = [];
+    var rows = [];
+    var cells = [];
+    var lines = [];
 
-function handleFiles(files) {
-  // Max Size Upload
-  if(files[0].size > 10971520){
-     alert("File is too big! Max size: 10MB.");
-     return;
-  };
-  if (window.FileReader) {
-      // FileReader are supported.
-      getAsText(files[0]);
-  } else {
-      alert('FileReader are not supported in this browser.');
-  }
-}
+    function handleFiles(files) {
+      // Max Size Upload
+      if (files[0].size > 10971520) {
+        alert("File is too big! Max size: 10MB.");
+        return;
+      };
+      if (window.FileReader) {
+        // FileReader are supported.
+        getAsText(files[0]);
+      } else {
+        alert('FileReader are not supported in this browser.');
+      }
+    }
 
-function getAsText(fileToRead) {
-  var reader = new FileReader();
-  // Read file into memory as UTF-8
-  reader.readAsText(fileToRead);
-  // Handle errors load
-  reader.onload = loadHandler;
-  reader.onerror = errorHandler;
-}
+    function getAsText(fileToRead) {
+      var reader = new FileReader();
+      // Read file into memory as UTF-8
+      reader.readAsText(fileToRead);
+      // Handle errors load
+      reader.onload = loadHandler;
+      reader.onerror = errorHandler;
+    }
 
-function loadHandler(event) {
-  var csv = event.target.result;
-  var heading_table = document.createElement("h5");
-  var table = document.createElement("table");
-  var rows = event.target.result.split("\n");
-  for (var i = 0; i < rows.length; i++) {
-      var cells = rows[i].split(",");
-      if (cells.length >= 1) {
-        var row = table.insertRow(-1);
-        if (i < 5)  {
-          for (var j = 0; j < cells.length; j++) {
+    function loadHandler(event) {
+      // Create Preview Table of CSV for 5 rows
+      var csv = event.target.result;
+      var heading_table = document.createElement("h5");
+      var table = document.createElement("table");
+      var rows = event.target.result.split("\n");
+      for (var i = 0; i < rows.length; i++) {
+        var cells = rows[i].split(",");
+        if (cells.length >= 1) {
+          var row = table.insertRow(-1);
+          if (i < 5) {
+            for (var j = 0; j < cells.length; j++) {
               var cell = row.insertCell(-1);
               cell.innerHTML = cells[j];
+            }
           }
         }
       }
-  }
-  var dvCSV = document.getElementById("dvCSV");
-  dvCSV.innerHTML = "";
-  heading_table.innerHTML = "Table Snapshot - 5 Rows";
-  dvCSV.appendChild(heading_table);
-  dvCSV.appendChild(table);
-  table.setAttribute("class", "table table-dark");
-  table.setAttribute('id', 'output_table');
-  processData(csv);}
-
-function processData(csv) {
-    var allTextLines = csv.split(/\r\n|\n/);
-    console.log(allTextLines);
-   // var lines = [];
-    for (var i=0; i<allTextLines.length; i++) {
-        var data = allTextLines[i].split(';');
-            var tarr = [];
-          
-            for (var j=0; j<data.length; j++) {
-              // console.log(data[j]);
-                tarr.push(data[j]);
-             
-            }
-            lines.push(tarr);
+      var dvCSV = document.getElementById("dvCSV");
+      dvCSV.innerHTML = "";
+      heading_table.innerHTML = "Table Snapshot - 5 Rows";
+      dvCSV.appendChild(heading_table);
+      dvCSV.appendChild(table);
+      table.setAttribute("class", "table table-dark");
+      table.setAttribute('id', 'output_table');
+      processData(csv);
     }
 
-console.log(lines[1][0]);
-};
+    function processData(csv) {
+      var allTextLines = csv.split(/\r\n|\n/);
+      console.log(allTextLines);
+      // var lines = [];
+      for (var i = 0; i < allTextLines.length; i++) {
+        var data = allTextLines[i].split(';');
+        var tarr = [];
+
+        for (var j = 0; j < data.length; j++) {
+          tarr.push(data[j]);
+        }
+        lines.push(tarr);
+      }
+    };
+
+    function errorHandler(evt) {
+      if (evt.target.error.name == "NotReadableError") {
+        alert("Cannot read file !");
+      }
+    }
+  </script>
 
 
-function errorHandler(evt) {
-  if(evt.target.error.name == "NotReadableError") {
-      alert("Cannot read file !");
-  }
-}
-    </script>
-    
-    
-
-    
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-
-
-
 </head>
 
 <style>
-    .container {
-      height: 200px;
-      position: relative;
-      border: 3px solid blue;
-    }
-    
-    .center {
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-    </style>
+  .container {
+    height: 200px;
+    position: relative;
+    border: 3px solid blue;
+  }
+
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+</style>
 
 <body>
 
   <div>
 
     <label for="apiKey">apiKey:</label>
-    <input type="text" id="apiKey" name="apiKey"><br><br>
+    <input type="text" id="apiKey" name="apiKey" value="AIzaSyDlH5h_gBUjeVwrtQeA_C6RirU26s1crWU"><br><br>
 
     <label for="authDomain">authDomain:</label>
-    <input type="text" id="authDomain" name="authDomain"><br><br>
+    <input type="text" id="authDomain" name="authDomain" value="authDomain-mittendorf.firebaseapp.com"><br><br>
 
     <label for="projectId">projectId::::</label>
-    <input type="text" id="projectId" name="projectId"><br><br>
+    <input type="text" id="projectId" name="projectId" value="christoph-mittendorf"><br><br>
 
     <label for="storageBucket">storageBucket:</label>
-    <input type="text" id="storageBucket" name="storageBucket"><br><br>
+    <input type="text" id="storageBucket" name="storageBucket" value="christoph-mittendorf.appspot.com"><br><br>
 
     <label for="messagingSenderId">messagingSenderId:</label>
-    <input type="text" id="messagingSenderId" name="messagingSenderId"><br><br>
+    <input type="text" id="messagingSenderId" name="messagingSenderId" value="111308864164"><br><br>
 
     <label for="appId">appId:</label>
-    <input type="text" id="appId" name="v"><br><br>
+    <input type="text" id="appId" name="appId" value="1:111308864164:web:65334b0e8d0967c1434431"><br><br>
 
     <label for="measurementId">measurementId:</label>
-    <input type="text" id="measurementId" name="measurementId"><br><br>
+    <input type="text" id="measurementId" name="measurementId" value="G-8YJP0VHNWJ"><br><br>
 
 
     <input type="button" id="details" value="Submit">
 
-</div>
+  </div>
 
 
 
-<div>
-  <!-- <script type="text/javascript" src="../static/csv_reader.js"></script> -->
-  <input class="custom-file-upload " type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
- </div>
+  <div>
+    <!-- <script type="text/javascript" src="../static/csv_reader.js"></script> -->
+    <input class="custom-file-upload " type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+  </div>
 
- <div id="dvCSV"></div>
+  <div id="dvCSV"></div>
 
- <div class="container">
-  <div class="center">
+  <div class="container">
+    <div class="center">
 
-<input id="clickMe_2" type="button" class="btn btn-primary btn-lg" value="Add Data to Firestore heroooe!" />
+      <input id="clickMe_2" type="button" class="btn btn-primary btn-lg" value="Add Data to Firestore heroooe!" />
 
-<script>
-
-
+      <script>
 
 
 
-</script>
 
-</div>
-</div>
+
+      </script>
+
+    </div>
+  </div>
 
 
 
 
 
 </body>
+
 </html>

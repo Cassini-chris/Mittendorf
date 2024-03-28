@@ -11,56 +11,61 @@ var storageBucket ="";
 var messagingSenderId ="";
 var appId ="";
 var measurementId ="";
-var db = "";
+var initializeApp_check = false;
+// var db = "";
 
 function details_function() {
   apiKey = document.getElementById("apiKey").value;
   console.log(apiKey);
 
-  // authDomain = document.getElementById("authDomain").value;
-  // console.log(authDomain);
+  authDomain = document.getElementById("authDomain").value;
+  console.log(authDomain);
 
-  // projectId = document.getElementById("projectId").value;
-  // console.log(projectId);
+  projectId = document.getElementById("projectId").value;
+  console.log(projectId);
 
-  // storageBucket = document.getElementById("storageBucket").value;
-  // console.log(storageBucket);
+  storageBucket = document.getElementById("storageBucket").value;
+  console.log(storageBucket);
 
-  // messagingSenderId = document.getElementById("messagingSenderId").value;
-  // console.log(messagingSenderId);
+  messagingSenderId = document.getElementById("messagingSenderId").value;
+  console.log(messagingSenderId);
 
-  // appId = document.getElementById("appId").value;
-  // console.log(appId);
+  appId = document.getElementById("appId").value;
+  console.log(appId);
 
-  // measurementId = document.getElementById("measurementId").value;
-  // console.log(measurementId);
+  measurementId = document.getElementById("measurementId").value;
+  console.log(measurementId);
 
 
 
-  const firebaseConfig = {
-    // apiKey : apiKey,
-    // authDomain: authDomain,
-    // projectId: projectId,
-    // storageBucket: storageBucket,
-    // messagingSenderId: messagingSenderId,
-    // appId: appId,
-    // measurementId: measurementId
+  // const firebaseConfig = {
+  //   // apiKey : apiKey,
+  //   // authDomain: authDomain,
+  //   // projectId: projectId,
+  //   // storageBucket: storageBucket,
+  //   // messagingSenderId: messagingSenderId,
+  //   // appId: appId,
+  //   // measurementId: measurementId
   
-    apiKey: "AIzaSyDlH5h_gBUjeVwrtQeA_C6RirU26s1crWU",
-    authDomain: "authDomain-mittendorf.firebaseapp.com",
-    projectId: "christoph-mittendorf",
-    storageBucket: "christoph-mittendorf.appspot.com",
-    messagingSenderId: "111308864164",
-    appId: "1:111308864164:web:65334b0e8d0967c1434431",
-    measurementId: "G-8YJP0VHNWJ"
-  };
+  //   apiKey: "AIzaSyDlH5h_gBUjeVwrtQeA_C6RirU26s1crWU",
+  //   authDomain: "authDomain-mittendorf.firebaseapp.com",
+  //   projectId: "christoph-mittendorf",
+  //   storageBucket: "christoph-mittendorf.appspot.com",
+  //   messagingSenderId: "111308864164",
+  //   appId: "1:111308864164:web:65334b0e8d0967c1434431",
+  //   measurementId: "G-8YJP0VHNWJ"
+  // };
 
-  const app = initializeApp(firebaseConfig);
+  // const app = initializeApp(firebaseConfig);
 
 
-  console.log(apiKey);
- 
-return app;
+  // console.log(apiKey);
+  // console.log(app);
+  // const db = getFirestore(app);
+
+  // console.log("db: " + db);
+  // console.log(db);
+  // console.log("db: " +typeof(db));
 
 };
 
@@ -97,12 +102,52 @@ function isNumeric(str) {
   } return str;
 };
 
-function add_data_to_firestore(app){
+function add_data_to_firestore(){
+
+
+
+console.log(initializeApp_check);
+  // if(initializeApp_check == true){firebaseConfig.delete()};
+
+  const firebaseConfig = {
+    apiKey : apiKey,
+    authDomain: authDomain,
+    projectId: projectId,
+    storageBucket: storageBucket,
+    messagingSenderId: messagingSenderId,
+    appId: appId,
+    measurementId: measurementId
+  
+    // apiKey: "AIzaSyDlH5h_gBUjeVwrtQeA_C6RirU26s1crWU",
+    // authDomain: "authDomain-mittendorf.firebaseapp.com",
+    // projectId: "christoph-mittendorf",
+    // storageBucket: "christoph-mittendorf.appspot.com",
+    // messagingSenderId: "111308864164",
+    // appId: "1:111308864164:web:65334b0e8d0967c1434431",
+    // measurementId: "G-8YJP0VHNWJ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+
+
+
+  initializeApp_check = true;
+
+  console.log(apiKey);
   console.log(app);
-  db = getFirestore(app);
+  const db = getFirestore(app);
+
+  console.log("db: " + db);
   console.log(db);
+  console.log("db: " +typeof(db));
+
+
+  console.log("db2: " +db);
+  console.log(db);
+  console.log("db2: " +typeof(db));
   var collection_name = "collection_name";
-   alert("clicked");
+   alert(db);
    const obj = {};
 
   
@@ -138,6 +183,8 @@ for (var y=1; y<lines.length; y++){
   
 console.log(obj);
 
+console.log("db3: " +db);
+console.log("db3: " +typeof(db));
  setDoc(doc(db, collection_name, document_name), obj)
     .then(() => {
         console.log("Document successfully written!");
