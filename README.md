@@ -1,9 +1,9 @@
 ### My Personal Website
 This repository contains the source code for my personal website, which showcases my interests and experiences in three main areas:
 
-#### Sports & Triathlon
-#### Machine Learning & Software Engineering
-#### Space Exploration
+#### -Sports & Triathlon
+#### -Machine Learning & Software Engineering
+#### -Space Exploration
 
 There's also a dedicated page about my background and accomplishments in the "Vita" section.
 
